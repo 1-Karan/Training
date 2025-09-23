@@ -1,0 +1,83 @@
+1. Create a Repository
+
+Initialize a new Git repository
+
+git init
+
+2. Add Files to Git
+
+Stage a specific file
+
+git add <file-name>
+
+
+Stage all changes (new, modified, deleted files)
+
+git add .
+
+3. Commit Changes
+
+Commit staged changes with a message
+
+git commit -m "Your commit message"
+
+4. Push Changes to GitHub
+
+Push changes to the main branch
+
+git push origin main
+
+
+Push a different branch
+
+git push origin <branch-name>
+
+5. Pull Changes from GitHub
+
+Pull the latest changes from the main branch
+
+git pull origin main
+
+6. Fetch Changes from GitHub
+
+Fetch updates from the remote repository (without merging)
+
+git fetch origin
+
+7. Create and Switch Branches
+
+Create a new branch
+
+git branch <branch-name>
+
+
+Switch to a different branch
+
+git checkout <branch-name>
+
+
+Create and switch to a new branch
+
+git checkout -b <branch-name>
+
+8. View Status and History
+
+Check the status of your repository
+
+git status
+
+
+View commit history
+
+git log
+
+9. Undo Changes
+
+Unstage a file
+
+git reset <file-name>
+
+
+Discard changes in a file (working directory)
+
+git checkout -- <file-name>
