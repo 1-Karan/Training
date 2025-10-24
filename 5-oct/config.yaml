@@ -1,0 +1,5 @@
+dataset: students.csv
+model: random forest
+params:
+  max_depth: 100
+  n_estimators: 100

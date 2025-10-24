@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="UTF-8" />
+  <title>Student List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    #error {
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-$END$
+  <h1>Students</h1>
+  <div id="error"></div>
+  <table id="students-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows go here -->
+    </tbody>
+  </table>
+
+  <script>
+    async function loadStudents() {
+      const errorDiv = document.getElementById("error");
+      errorDiv.textContent = "";
+      try {
+        const resp = await fetch("/students");
+        if (!resp.ok) {
+          throw new Error(`HTTP error! status: ${resp.status}`);
+        }
+        const students = await resp.json();
+        const tbody = document.querySelector("#students-table tbody");
+        tbody.innerHTML = "";
+
+        students.forEach(s => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${s.id}</td>
+            <td>${s.name}</td>
+            <td>${s.grade}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error("Failed to load students:", err);
+        errorDiv.textContent = "Error loading students: " + err.message;
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", loadStudents);
+  </script>
 </body>
 </html>
