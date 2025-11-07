@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Assistant</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .chat-box {
+            width: 100%;
+            max-width: 700px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            overflow-y: auto;
+            height: 500px;
+        }
+        .message {
+            margin-bottom: 16px;
+        }
+        .user {
+            text-align: right;
+        }
+        .user span {
+            background: #0078d7;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .bot span {
+            background: #e9e9e9;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .input-section {
+            display: flex;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 700px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Assistant</h1>
+
+    <div class="chat-box" id="chat-box">
+        <div class="message bot"><span>Hello! Ask me anything.</span></div>
+    </div>
+
+    <div class="input-section">
+        <input type="text" id="query" placeholder="Type your question..." autocomplete="off">
+        <button id="send-btn">Send</button>
+    </div>
+
+    <script>
+        const input = document.getElementById("query");
+        const button = document.getElementById("send-btn");
+        const chatBox = document.getElementById("chat-box");
+
+        async function sendQuery() {
+            const text = input.value.trim();
+            if (!text) return;
+            appendMessage("user", text);
+            input.value = "";
+
+            const formData = new FormData();
+            formData.append("query", text);
+
+            appendMessage("bot", "...");
+            const loadingMessage = chatBox.lastElementChild;
+
+            try {
+                const res = await fetch("/generate", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await res.json();
+                chatBox.removeChild(loadingMessage);
+                appendMessage("bot", data.response || "No response from server.");
+            } catch (err) {
+                chatBox.removeChild(loadingMessage);
+                appendMessage("bot", "Error: " + err.message);
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const div = document.createElement("div");
+            div.classList.add("message", sender);
+            const span = document.createElement("span");
+            span.textContent = text;
+            div.appendChild(span);
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        button.addEventListener("click", sendQuery);
+        input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendQuery();
+        });
+    </script>
+</body>
+</html>
