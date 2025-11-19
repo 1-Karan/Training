@@ -1,0 +1,58 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8" />-->
+<!--  <title>Login | Meeting AI Assistant</title>-->
+<!--  <link rel="stylesheet" href="../static/style.css" />-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="container">-->
+<!--    <h1 class="main-title">Smart Meeting Synthesizer</h1>-->
+<!--    <p class="sub-text">Transform your meetings into actionable intelligence.</p>-->
+<!--    <hr class="divider" />-->
+
+<!--    <div class="stCard">-->
+<!--      <h2>🔐 Employee Login</h2>-->
+<!--      {% if error %}-->
+<!--        <p class="error">{{ error }}</p>-->
+<!--      {% endif %}-->
+<!--      <form method="post" action="/login/">-->
+<!--        <div class="form-row">-->
+<!--          <input type="email" name="email" placeholder="Email Address" required />-->
+<!--          <input type="text" name="team_name" placeholder="Team Name" required />-->
+<!--        </div>-->
+<!--        <button type="submit">Login</button>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Login | Meeting AI Assistant</title>
+<link rel="stylesheet" href="../static/style.css" />
+</head>
+<body>
+<div class="container">
+<h1 class="main-title">Smart Meeting Synthesizer</h1>
+<p class="sub-text">Transform your meetings into actionable intelligence.</p>
+<hr class="divider" />
+
+    <div class="stCard">
+<h2>🔐 Employee Login</h2>
+      {% if error %}
+<p class="error">{{ error }}</p>
+      {% endif %}
+<form method="post" action="/login/">
+<div class="form-row vertical">
+<input type="email" name="email" placeholder="Email Address" required />
+<input type="text" name="team_name" placeholder="Team Name" required />
+</div>
+<button type="submit">Login</button>
+</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8" />-->
+<!--  <title>Dashboard | Meeting AI Assistant</title>-->
+<!--  <link rel="stylesheet" href="../static/style.css" />-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="container">-->
+<!--    <h1 class="main-title">Smart Meeting Synthesizer</h1>-->
+<!--    <p class="sub-text">Welcome, {{ email }} | Team: {{ team }}</p>-->
+<!--    <hr class="divider" />-->
+
+<!--    {% if message %}-->
+<!--      <p class="success">{{ message }}</p>-->
+<!--    {% endif %}-->
+<!--    &lt;!&ndash; 🔍 Loading Animation &ndash;&gt;-->
+<!--    <div id="loading-animation" class="loading-container" style="display: none;">-->
+<!--    <div class="magnifier"></div>-->
+<!--    <p>Analyzing transcript...</p>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Upload Transcript &ndash;&gt;-->
+<!--    <div class="stCard">-->
+<!--      <h2 class="section-header">📄 Upload Meeting Transcript</h2>-->
+<!--      <form method="post" action="/analyze_meeting/" enctype="multipart/form-data">-->
+<!--        <input type="hidden" name="email" value="{{ email }}" />-->
+<!--        <input type="hidden" name="team" value="{{ team }}" />-->
+<!--        <input type="file" name="file" accept=".docx" required />-->
+<!--        <button type="submit">Analyze Transcript</button>-->
+<!--      </form>-->
+<!--    </div>-->
+
+<!--    {% if summary %}-->
+<!--    &lt;!&ndash; Summary Display &ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="stCard">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2 class="section-header">🧾 Meeting Summary</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;      <textarea rows="10" style="width:100%;">{{ summary }}</textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--      <div class="stCard">-->
+<!--        <h2 class="section-header">🧾 Meeting Summary</h2>-->
+<!--        <div class="markdown-body">-->
+
+<!--            {{ summary | safe }}-->
+<!--        </div>-->
+<!--        </div>-->
+
+
+<!--    &lt;!&ndash; Email Sending &ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="stCard">&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2 class="section-header">✉️ Send Meeting Summary</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;      <form method="post" action="/send_emails/" id="email-form">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="hidden" name="email" value="{{ email }}" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="hidden" name="team" value="{{ team }}" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="hidden" name="summary" value="{{ summary }}" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <label>Select Recipients:</label><br/>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for member in members %}&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="recipient-checkbox">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" name="recipients" value="{{ member }}" /> {{ member }}&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit">📤 Send Meeting Summary</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endif %}&ndash;&gt;-->
+<!--      {% if summary %}-->
+<!--  &lt;!&ndash; Summary Display &ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="stCard">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h2 class="section-header">🧾 Meeting Summary</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="markdown-body">&ndash;&gt;-->
+<!--&lt;!&ndash;      {{ summary | safe }}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--  &lt;!&ndash; ✉️ Send Meeting Summary &ndash;&gt;-->
+<!--      <div id="loading-animation" class="loading-container" style="display: none;">-->
+<!--  <div class="spinner"></div>-->
+<!--  <p>Analyzing transcript...</p>-->
+<!--</div>-->
+
+<!--  <div class="stCard">-->
+<!--    <h2 class="section-header">✉️ Send Meeting Summary</h2>-->
+<!--    <form method="post" action="/send_emails/" id="email-form">-->
+<!--      <input type="hidden" name="email" value="{{ email }}" />-->
+<!--      <input type="hidden" name="team" value="{{ team }}" />-->
+<!--      <input type="hidden" name="summary" value="{{ summary }}" />-->
+<!--      <label>Select Recipients:</label>-->
+<!--      <div class="recipient-grid">-->
+<!--        {% for member in members %}-->
+<!--          <label class="recipient-tile">-->
+<!--            <input type="checkbox" name="recipients" value="{{ member }}" />-->
+<!--            {{ member }}-->
+<!--          </label>-->
+<!--        {% endfor %}-->
+<!--      </div>-->
+<!--      <button type="submit">📤 Send Meeting Summary</button>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; ⏰ Set Reminders &ndash;&gt;-->
+<!--  <div class="stCard">-->
+<!--    <h2 class="section-header">⏰ Add Follow-up Reminders</h2>-->
+<!--    <form method="post" action="/set_reminders/">-->
+<!--      <input type="hidden" name="email" value="{{ email }}" />-->
+<!--      <input type="hidden" name="team" value="{{ team }}" />-->
+<!--      <input type="hidden" name="summary" value="{{ summary }}" />-->
+<!--      <button type="submit">Add Reminders to Calendar</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--{% endif %}-->
+
+
+<!--&lt;!&ndash;    &lt;!&ndash; ⏰ Set Reminders &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="stCard">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h2 class="section-header">⏰ Add Follow-up Reminders</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <form method="post" action="/set_reminders/">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="hidden" name="email" value="{{ email }}" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="hidden" name="team" value="{{ team }}" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="hidden" name="summary" value="{{ summary }}" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <button type="submit">Add Reminders to Calendar</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--    <hr class="divider" />-->
+<!--    <a href="/" class="logout-btn">Logout</a>-->
+<!--  </div>-->
+<!--  <script src="../static/script.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | Meeting AI Assistant</title>
+  <link rel="stylesheet" href="../static/style.css" />
+</head>
+<!-- Dark Mode Toggle Button -->
+<!--<button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>-->
+
+<body>
+  <div class="container">
+    <h1 class="main-title">Smart Meeting Synthesizer</h1>
+    <p class="sub-text">Welcome, {{ email }} | Team: {{ team }}</p>
+    <hr class="divider" />
+
+    {% if message %}
+      <p class="success">{{ message }}</p>
+    {% endif %}
+
+    <!-- 🔍 Analyze Transcript Loading (Magnifier) -->
+    <div id="analyze-loading" class="loading-container" style="display: none;">
+      <div class="magnifier"></div>
+      <p>Analyzing transcript...</p>
+    </div>
+
+    <!-- 📄 Upload Transcript -->
+    <div class="stCard">
+      <h2 class="section-header">📄 Upload Meeting Transcript</h2>
+      <form method="post" action="/analyze_meeting/" enctype="multipart/form-data">
+        <input type="hidden" name="email" value="{{ email }}" />
+        <input type="hidden" name="team" value="{{ team }}" />
+        <input type="file" name="file" accept=".docx" required />
+        <button type="submit">Analyze Transcript</button>
+      </form>
+    </div>
+
+    {% if summary %}
+      <!-- 🧾 Meeting Summary -->
+      <div class="stCard">
+        <h2 class="section-header">🧾 Meeting Summary</h2>
+        <div class="markdown-body">
+          {{ summary | safe }}
+        </div>
+      </div>
+
+      <!-- ✉️ Email Sending -->
+      <div class="stCard">
+        <h2 class="section-header">✉️ Send Meeting Summary</h2>
+        <form method="post" action="/send_emails/" id="email-form">
+          <input type="hidden" name="email" value="{{ email }}" />
+          <input type="hidden" name="team" value="{{ team }}" />
+          <input type="hidden" name="summary" value="{{ summary }}" />
+          <label>Select Recipients:</label>
+          <div class="recipient-grid">
+            {% for member in members %}
+              <label class="recipient-tile">
+                <input type="checkbox" name="recipients" value="{{ member }}" />
+                {{ member }}
+              </label>
+            {% endfor %}
+          </div>
+          <button type="submit">📤 Send Meeting Summary</button>
+        </form>
+        <!-- Email Loading (Spinner) -->
+        <div id="email-loading" class="loading-container" style="display: none;">
+          <div class="spinner"></div>
+          <p>Sending emails...</p>
+        </div>
+      </div>
+
+      <!-- ⏰ Set Reminders -->
+      <div class="stCard">
+        <h2 class="section-header">⏰ Add Follow-up Reminders</h2>
+        <form method="post" action="/set_reminders/" id="reminder-form">
+          <input type="hidden" name="email" value="{{ email }}" />
+          <input type="hidden" name="team" value="{{ team }}" />
+          <input type="hidden" name="summary" value="{{ summary }}" />
+          <button type="submit">Add Reminders to Calendar</button>
+        </form>
+        <!-- Reminder Loading (Spinner) -->
+        <div id="reminder-loading" class="loading-container" style="display: none;">
+          <div class="spinner"></div>
+          <p>Adding reminders...</p>
+        </div>
+      </div>
+    {% endif %}
+
+    <hr class="divider" />
+    <a href="/" class="logout-btn">Logout</a>
+  </div>
+
+  <!-- Popup Notification -->
+  <div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <span id="popup-message"></span>
+      <button id="popup-close">OK</button>
+    </div>
+  </div>
+
+  <script src="../static/script.js"></script>
+</body>
+</html>
+
+
+  <script src="../static/script.js"></script>
+</body>
+</html>
