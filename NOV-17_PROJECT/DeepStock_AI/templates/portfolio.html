@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio Analysis</title>
+<link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<header class="hero small">
+<h1>Portfolio Analysis</h1>
+<p class="tagline">Build your portfolio and analyze with AI insights</p>
+</header>
+
+  <section class="dashboard">
+<!-- Input row -->
+<div>
+<label>Symbol:</label>
+<input type="text" id="symbolInput" placeholder="e.g. TCS" required>
+<label>Quantity:</label>
+<input type="number" id="quantityInput" placeholder="e.g. 10" required>
+<button type="button" id="addBtn">Add</button>
+</div>
+
+    <!-- Portfolio table -->
+<h3>Portfolio</h3>
+<table border="1" cellpadding="8" cellspacing="0" id="portfolioTable">
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Quantity</th>
+</tr>
+</thead>
+<tbody>
+<!-- Rows will be added dynamically -->
+</tbody>
+</table>
+
+    <!-- Risk dropdown -->
+<h3>Risk Preference</h3>
+<select id="riskSelect" required>
+<option value="low">Low</option>
+<option value="medium">Medium</option>
+<option value="high" selected>High</option>
+</select>
+
+    <br><br>
+<button type="button" id="analyzeBtn">Analyze Portfolio</button>
+
+    <div id="loading" class="loading" style="display:none;">⏳ Analyzing portfolio...</div>
+      <div id="loading1" class="loading" style="display:none;">
+  <blockquote>
+    💡 “In investing, what is comfortable is rarely profitable.”
+    <footer>— Robert Arnott</footer>
+  </blockquote>
+</div>
+<div id="portfolioResults" class="results"></div>
+</section>
+<script type="module">
+  import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+  window.marked = marked; // expose globally so portfolio.js can use it
+</script>
+
+  <script src="../static/portfolio.js"></script>
+</body>
+</html>

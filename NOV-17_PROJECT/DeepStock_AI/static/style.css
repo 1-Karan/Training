@@ -1,0 +1,319 @@
+/* Global styles */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #0f172a;   /* Deep Navy background */
+  color: #f1f5f9;        /* Soft Gray text */
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 3rem;
+  background: #0f172a;   /* Keep hero consistent with body */
+  color: #14b8a6;        /* Teal accent for hero text */
+}
+
+.hero.small {
+  padding: 2rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #f1f5f9;        /* Soft Gray tagline */
+  opacity: 0.9;
+}
+
+/* Tiles section */
+.tiles {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background: rgba(20, 184, 166, 0.1); /* Teal accent with transparency */
+  border: 1px solid #14b8a6;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 250px;
+  color: #f1f5f9;
+  text-align: center;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4); /* Sky Blue glow */
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background: #38bdf8;   /* Sky Blue button */
+  color: #0f172a;        /* Deep Navy text for contrast */
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* Dashboard section */
+.dashboard {
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #14b8a6; /* Teal border */
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #1e293b;       /* Slightly lighter navy */
+  color: #f1f5f9;
+}
+
+input:focus {
+  border-color: #38bdf8;     /* Sky Blue focus */
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.6);
+  outline: none;
+}
+
+/* NEW: Risk Preference dropdown */
+select#riskSelect {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #14b8a6; /* Teal border */
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #1e293b;       /* Match input background */
+  color: #f1f5f9;            /* Soft Gray text */
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select#riskSelect:focus {
+  border-color: #38bdf8;     /* Sky Blue focus */
+  box-shadow: 0 0 5px rgba(56, 189, 248, 0.6);
+  outline: none;
+}
+
+button {
+  padding: 0.8rem 1.2rem;
+  background: #38bdf8;       /* Sky Blue */
+  color: #0f172a;            /* Deep Navy text */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* Results section */
+.results {
+  margin-top: 2rem;
+  text-align: left;
+  background: #1e293b;       /* Slightly lighter navy for contrast */
+  border: 1px solid #14b8a6; /* Teal border */
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: #f1f5f9;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); /* Sky Blue shadow */
+}
+
+/* Loading state */
+.loading {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #38bdf8;            /* Sky Blue loading text */
+  font-weight: 600;
+}
+
+/* Center the portfolio table itself */
+#portfolioTable {
+  margin: 0 auto;          /* centers the table horizontally */
+  text-align: center;      /* centers text inside cells */
+  border-collapse: collapse;
+}
+
+/* Optional: style table headers and cells */
+#portfolioTable th,
+#portfolioTable td {
+  text-align: center;      /* ensures values are centered */
+  padding: 0.8rem;
+}
+
+/* Optional: make table look consistent with your theme */
+#portfolioTable {
+  border: 1px solid #14b8a6;   /* Teal border */
+  background: #1e293b;         /* Slightly lighter navy */
+  color: #f1f5f9;              /* Soft Gray text */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+}
+
+.markdown {
+  background: #f0f9ff;       /* light pastel background */
+  border: 1px solid #60a5fa; /* sky blue border */
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+.markdown h1, .markdown h2, .markdown h3, .markdown h4 {
+  color: #014f86;            /* deep blue headings */
+  margin-top: 1rem;
+}
+
+.markdown ul, .markdown ol {
+  margin-left: 1.5rem;
+}
+
+.markdown code {
+  background: #e2e8f0;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/*6:30*/
+
+/*.chart-breakdown {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.chart, .breakdown {
+  flex: 1;
+  background: #f0f9ff;       /* light pastel background */
+  border: 1px solid #60a5fa; /* sky blue border */
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.chart img {
+  display: block;
+  margin: 0 auto;
+}
+
+.markdown {
+  background: #f0f9ff;
+  border: 1px solid #60a5fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  line-height: 1.6;
+}*/
+.chart-breakdown {
+
+  display: flex;
+
+  gap: 2rem;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  margin-bottom: 2rem;
+
+}
+
+.chart, .breakdown {
+
+  flex: 1;
+
+  background: #f0f9ff;       /* light pastel background */
+
+  border: 1px solid #60a5fa; /* sky blue border */
+
+  padding: 1rem;
+
+  border-radius: 8px;
+
+  color: #0f172a;            /* Dark navy text for readability */
+
+}
+
+/* Ensure headings are visible */
+
+.chart h4, .breakdown h4 {
+
+  color: #014f86;            /* Deep blue headings */
+
+  margin-bottom: 1rem;
+
+}
+
+/* Table text color fix */
+
+.breakdown table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  color: #0f172a;            /* Dark text for table values */
+
+}
+
+.breakdown th {
+
+  background: #89c2d9;       /* Light pastel blue header */
+
+  color: #0f172a;
+
+  padding: 0.5rem;
+
+}
+
+.breakdown td {
+
+  padding: 0.5rem;
+
+  border-top: 1px solid #60a5fa;
+
+}
+.footer {
+  background-color: #f9f9f9;
+  color: #555;
+  text-align: center;
+  padding: 12px;
+  font-size: 0.85em;
+  border-top: 1px solid #ddd;
+}
+.footer p {
+  margin: 0;
+}
+
+
+

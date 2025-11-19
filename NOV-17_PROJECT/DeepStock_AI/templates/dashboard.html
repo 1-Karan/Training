@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard - Stock Insights Chatbot</title>
+<link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../static/scripts.js"></script>
+
+
+</head>
+<body>
+<header class="hero small">
+<h1>DeepStock.AI</h1>
+<p class="tagline">Interact with the AI Assistant below</p>
+</header>
+
+  <section class="dashboard">
+<form id="queryForm">
+<input type="text" id="userQuery" placeholder="Enter your stock query..." required>
+<button type="submit">Submit</button>
+</form>
+
+    <div id="loading" class="loading" style="display:none;">⏳ Processing your query...</div>
+      <div id="loading1" class="loading" style="display:none;">
+  <blockquote>
+    Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble.”
+    <footer>— Warren Buffett</footer>
+  </blockquote>
+</div>
+
+    <div id="results" class="results">
+<!-- Results will be injected here -->
+</div>
+</section>
+
+  <script src="../static/scripts.js"></script>
+</body>
+</html>
+
